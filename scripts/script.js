@@ -1,6 +1,6 @@
 var timeInfo = new Date(), hrs, mins
 const possibilities = {
-  1 : ["oneTop"],
+  1 : [["oneTop"]],
   2 : [["oneTop", "oneDown"], ["two"]],
   3 : [["oneTop", "two"], ["three"]],
   4 : [["oneTop", "oneDown", "two"], ["oneTop", "three"]],
@@ -10,18 +10,21 @@ const possibilities = {
   8 : [["oneTop", "two", "five"], ["three", "five"]],
   9 : [["oneTop", "three", "five"], ["oneTop", "oneDown", "two", "five"]],
   10 : [["oneTop", "oneDown", "three", "five"], ["two", "three", "five"]],
-  11 : ["oneTop", "two", "three", "five"],
-  12 : ["oneTop", "oneDown", "two", "three", "five"]
+  11 : [["oneTop", "two", "three", "five"]],
+  12 : [["oneTop", "oneDown", "two", "three", "five"]],
 }
 
-if(timeInfo.getHours() > 12) {
-  hrs = timeInfo.getHours() - 12
+function getHoursMinutes() {
+  if(timeInfo.getHours() > 12) {
+    hrs = timeInfo.getHours() - 12
+  }
+  else {
+    if(timeInfo.getHours() === 0)  hrs = timeInfo.getHours() + 12
+    else hrs = timeInfo.getHours()
+  }
+  mins = timeInfo.getMinutes()
+  console.log(hrs,mins)
 }
-else {
-  if(timeInfor.getHours === 0)  hrs = timeInfo.getHours() + 12
-  else hrs = timeInfo.getHours()
-}
-mins = timeInfo.getMinutes()
 
 function setAllBGtoWhite() {
   var gridAreas = document.querySelectorAll('.children')
@@ -31,11 +34,14 @@ function setAllBGtoWhite() {
   }
 }
 
-if((mins-(mins % 5)) / 5 === 0) {
+function colorAreas() {
+// if((mins-(mins % 5)) / 5 === 0) {
   setAllBGtoWhite()
+  getHoursMinutes()
   var hoursPossibleArrays, minutesPossibleArrays
   hoursPossibleArrays = possibilities[hrs]
   minutesPossibleArrays = possibilities[(mins-(mins % 5)) / 5 ]
+  console.log(hoursPossibleArrays, 'hoursPossibleArrays')
   // console.log(hours)
   // console.log(minutes, 'obtained from possibilities')
   var randomHourArray, randomMinuteArray
@@ -57,12 +63,19 @@ if((mins-(mins % 5)) / 5 === 0) {
   for(let hourArea of randomHourArray) {
     if(copy.length !== 0 && copy.indexOf(hourArea) !== -1) {
       commonAreaArray.push(hourArea)
-      copy.splice(copy.indexOf(hourArea))
+      copy.splice(copy.indexOf(hourArea), 1)
     }
   }
-
+  console.log(commonAreaArray, 'commcon')
   for(commonArea of commonAreaArray) {
-    let area = document.querySelector(`.${commonArea}`)
+    var area = document.querySelector(`.${commonArea}`)
     area.style.backgroundColor = 'blue'
   }
+// }
 }
+
+colorAreas()
+// getHoursMinutes()
+// if((mins-(mins % 5)) % 5 === 0) {
+//   colorAreas()
+// }
