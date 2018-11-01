@@ -1,3 +1,18 @@
+html {
+  background-color: black;
+}
+
+h1 {
+  color: red;
+  text-align: center;
+  font-size: 50px;
+}
+
+p {
+  color: white;
+  text-align: center;
+}
+
 .goldenRectangle {
   width: 51.8%;
   height: 67.3%;
