@@ -12,3 +12,15 @@ const possibilities = {
   11 : ["one", "two", "three", "five"],
   12 : ["one", "one", "two", "three", "five"]
 }
+
+var timeInfo = new Date(), hrs, mins
+if(timeInfo.getHours() > 12) {
+  hrs = timeInfo.getHours() - 12
+  mins = timeInfo.getMinutes()
+}
+else {
+  hrs = timeInfo.getHours()
+  mins = timeInfo.getMinutes()
+}
+
+console.log(hrs, mins)
