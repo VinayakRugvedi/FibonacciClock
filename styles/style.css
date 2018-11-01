@@ -1,0 +1,41 @@
+.goldenRectangle {
+  width: 51.8%;
+  height: 67.3%;
+  /* width: 987px; */
+  /* height: 610px; */
+  margin: 0 auto;
+  border: 5px solid gold;
+  display: grid;
+  grid-template-columns: 25% 14% 60%;
+  grid-template-rows: 18.65% 18.65% 61%;
+  grid-template-areas:
+  "two oneTop five"
+  "two oneDown five"
+  "three three five";
+  grid-column-gap: 0.5%;
+  grid-row-gap: 0.88%;
+}
+
+.children {
+  border: 2px dotted black;
+}
+
+.oneTop {
+  grid-area: oneTop;
+}
+
+.oneDown {
+  grid-area: oneDown;
+}
+
+.two {
+  grid-area: two;
+}
+
+.three {
+  grid-area: three;
+}
+
+.five {
+  grid-area: five;
+}
