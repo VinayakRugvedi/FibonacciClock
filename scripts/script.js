@@ -80,12 +80,13 @@ function colorAreas() {
   //   }
   // }
   console.log(commonAreaArray, 'commcon')
-  var commonArea = commonAreaArray[Math.floor(Math.random() * commonAreaArray.length)]
-  // for(commonArea of commonAreaArray) {
+  var commonArea
+  // = commonAreaArray[Math.floor(Math.random() * commonAreaArray.length)]
+  for(commonArea of commonAreaArray) {
     var area = document.querySelector(`.${commonArea}`)
     if(area !== null)
     area.style.backgroundColor = 'blue'
-  // }
+  }
 }
 
 colorAreas()
