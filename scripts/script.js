@@ -1,26 +1,32 @@
+var timeInfo = new Date(), hrs, mins
 const possibilities = {
-  1 : ["one"],
-  2 : [["one", "one"], ["two"]],
-  3 : [["one", "two"], ["three"]],
-  4 : [["one", "one", "two"], ["one", "three"]],
-  5 : [["one", "one", "three"], ["two", "three"], ["five"]],
-  6 : [["one", "five"], ["one", "two", "three"]],
-  7 : [["one", "one", "five"], ["one", "one", "two", "three"], ["two", "five"]],
-  8 : [["one", "two", "five"], ["three", "five"]],
-  9 : [["one", "three", "five"], ["one", "one", "two", "five"]],
-  10 : [["one", "one", "three", "five"], ["two", "three", "five"]],
-  11 : ["one", "two", "three", "five"],
-  12 : ["one", "one", "two", "three", "five"]
+  1 : ["oneTop"],
+  2 : [["oneTop", "oneDown"], ["two"]],
+  3 : [["oneTop", "two"], ["three"]],
+  4 : [["oneTop", "oneDown", "two"], ["oneTop", "three"]],
+  5 : [["oneTop", "oneDown", "three"], ["two", "three"], ["five"]],
+  6 : [["oneTop", "five"], ["oneTop", "two", "three"]],
+  7 : [["oneTop", "oneDown", "five"], ["oneTop", "oneDown", "two", "three"], ["two", "five"]],
+  8 : [["oneTop", "two", "five"], ["three", "five"]],
+  9 : [["oneTop", "three", "five"], ["oneTop", "oneDown", "two", "five"]],
+  10 : [["oneTop", "oneDown", "three", "five"], ["two", "three", "five"]],
+  11 : ["oneTop", "two", "three", "five"],
+  12 : ["oneTop", "oneDown", "two", "three", "five"]
 }
 
-var timeInfo = new Date(), hrs, mins
 if(timeInfo.getHours() > 12) {
   hrs = timeInfo.getHours() - 12
-  mins = timeInfo.getMinutes()
 }
 else {
-  hrs = timeInfo.getHours()
-  mins = timeInfo.getMinutes()
+  if(timeInfor.getHours === 0)  hrs = timeInfo.getHours() + 12
+  else hrs = timeInfo.getHours()
 }
+mins = timeInfo.getMinutes()
 
-console.log(hrs, mins)
+function setAllBGtoWhite() {
+  var gridAreas = document.querySelectorAll('.children')
+  console.log(gridAreas )
+  for(let area of gridAreas) {
+    area.style.backgroundColor = 'grey'
+  }
+}
