@@ -30,3 +30,39 @@ function setAllBGtoWhite() {
     area.style.backgroundColor = 'grey'
   }
 }
+
+if((mins-(mins % 5)) / 5 === 0) {
+  setAllBGtoWhite()
+  var hoursPossibleArrays, minutesPossibleArrays
+  hoursPossibleArrays = possibilities[hrs]
+  minutesPossibleArrays = possibilities[(mins-(mins % 5)) / 5 ]
+  // console.log(hours)
+  // console.log(minutes, 'obtained from possibilities')
+  var randomHourArray, randomMinuteArray
+  randomHourArray = hoursPossibleArrays[Math.floor(Math.random() * hoursPossibleArrays.length)]
+  randomMinuteArray = minutesPossibleArrays[Math.floor(Math.random() * minutesPossibleArrays.length)]
+  console.log(randomHourArray, 'array of hour')
+  for(let hourArea of randomHourArray) {
+    var area = document.querySelector(`.${hourArea}`)
+    area.style.backgroundColor = 'red'
+  }
+  console.log(randomMinuteArray, 'array of minute')
+  for(let minuteArea of randomMinuteArray) {
+    var area = document.querySelector(`.${minuteArea}`)
+    area.style.backgroundColor = 'green'
+  }
+
+  var commonAreaArray = []
+  var copy = [...randomMinuteArray]
+  for(let hourArea of randomHourArray) {
+    if(copy.length !== 0 && copy.indexOf(hourArea) !== -1) {
+      commonAreaArray.push(hourArea)
+      copy.splice(copy.indexOf(hourArea))
+    }
+  }
+
+  for(commonArea of commonAreaArray) {
+    let area = document.querySelector(`.${commonArea}`)
+    area.style.backgroundColor = 'blue'
+  }
+}
