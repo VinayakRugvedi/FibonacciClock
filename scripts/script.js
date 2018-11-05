@@ -24,12 +24,10 @@ function getHoursMinutes() {
     else hrs = timeInfo.getHours()
   }
   mins = timeInfo.getMinutes()
-  console.log(hrs,mins)
 }
 
 function setAllBGtoWhite() {
   var gridAreas = document.querySelectorAll('.children')
-  console.log(gridAreas )
   for(let area of gridAreas) {
     area.style.backgroundColor = 'grey'
   }
@@ -60,28 +58,16 @@ function colorAreas() {
   var hoursPossibleArrays = [], minutesPossibleArrays = []
   hoursPossibleArrays = possibilities[hrs]
   minutesPossibleArrays = possibilities[(mins-(mins % 5)) / 5 ]
-  console.log(hoursPossibleArrays, 'hoursPossibleArrays')
 
   var randomHourArray = [], randomMinuteArray = []
   randomHourArray = hoursPossibleArrays[Math.floor(Math.random() * hoursPossibleArrays.length)]
   randomMinuteArray = minutesPossibleArrays[Math.floor(Math.random() * minutesPossibleArrays.length)]
 
-  console.log(randomHourArray, 'array of hour')
   colorSpecificAreas(randomMinuteArray, 'green')
   colorSpecificAreas(randomHourArray, 'red')
-  console.log(randomMinuteArray, 'array of minute')
-  // colorSpecificAreas(randomMinuteArray, 'green')
   var commonAreaArray = computeCommonAreas(randomHourArray, randomMinuteArray)
-  // var copy = [...randomMinuteArray]
-  // for(let hourArea of randomHourArray) {
-  //   if(copy.length !== 0 && copy.indexOf(hourArea) !== -1) {
-  //     commonAreaArray.push(hourArea)
-  //     copy.splice(copy.indexOf(hourArea), 1)
-  //   }
-  // }
-  console.log(commonAreaArray, 'commcon')
+
   var commonArea
-  // = commonAreaArray[Math.floor(Math.random() * commonAreaArray.length)]
   for(commonArea of commonAreaArray) {
     var area = document.querySelector(`.${commonArea}`)
     if(area !== null)
