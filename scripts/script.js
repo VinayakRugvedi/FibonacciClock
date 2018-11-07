@@ -15,6 +15,13 @@ const possibilities = {
   12 : [["oneTop", "oneDown", "two", "three", "five"]],
 }
 
+function setGoldenRectangle() {
+  var goldenRectangle = document.querySelector('.goldenRectangle')
+  goldenRectangle.style.width = '51.4%'
+  var width = 0.514 * window.innerWidth
+  goldenRectangle.style.height = `${0.61803 * width}`
+}
+
 function getHoursMinutes() {
   if(timeInfo.getHours() > 12) {
     hrs = timeInfo.getHours() - 12
@@ -63,7 +70,7 @@ function colorAreas() {
   randomHourArray = hoursPossibleArrays[Math.floor(Math.random() * hoursPossibleArrays.length)]
   randomMinuteArray = minutesPossibleArrays[Math.floor(Math.random() * minutesPossibleArrays.length)]
 
-  colorSpecificAreas(randomMinuteArray, 'green')
+  colorSpecificAreas(randomMinuteArray, 'rgb(0,255,0)')
   colorSpecificAreas(randomHourArray, 'red')
   var commonAreaArray = computeCommonAreas(randomHourArray, randomMinuteArray)
 
@@ -75,8 +82,12 @@ function colorAreas() {
   }
 }
 
-colorAreas()
-// getHoursMinutes()
-if((mins-(mins % 5)) / 5 === 0) {
+function entryPoint() {
+  setGoldenRectangle()
   colorAreas()
 }
+
+entryPoint()
+setInterval(() => entryPoint(), 300000)
+
+window.onresize = entryPoint
