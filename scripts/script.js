@@ -33,7 +33,7 @@ function getHoursMinutes() {
   mins = timeInfo.getMinutes()
 }
 
-function setAllBGtoWhite() {
+function setAllBGtoGrey() {
   var gridAreas = document.querySelectorAll('.children')
   for(let area of gridAreas) {
     area.style.backgroundColor = 'grey'
@@ -60,7 +60,7 @@ function computeCommonAreas(randomHourArray, randomMinuteArray) {
 }
 
 function colorAreas() {
-  setAllBGtoWhite()
+  setAllBGtoGrey()
   getHoursMinutes()
   var hoursPossibleArrays = [], minutesPossibleArrays = []
   hoursPossibleArrays = possibilities[hrs]
